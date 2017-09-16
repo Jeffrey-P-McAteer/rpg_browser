@@ -1,0 +1,35 @@
+- import std.conv;
+
+doctype html
+html
+	head
+		title RPG Browser Server
+		link(rel="shortcut icon", href="favicon.png")
+		link(rel="stylesheet",type="text/css",href="style.css")
+	body
+		form#gamecanvas(action="saveitem", method="POST")
+			- string item_uuid = item.uuid;
+			- string item_bg_url = item.background_url;
+			- string item_width = to!string(item.width);
+			- string item_height = to!string(item.height);
+			- string item_greentext = item.greentext;
+			- string item_on_player_collide = item.on_player_collide;
+			
+			h2 Editing #{item_uuid}
+			input(type="hidden", name="i_uuid", value="#{item_uuid}")
+			
+			p Background URL
+				input(type="text", name="i_background_url", value="#{item_bg_url}")
+			
+			p Width / Height
+				input(type="number", name="i_width", value="#{item_width}")
+				input(type="number", name="i_height", value="#{item_height}")
+			
+			p Greentext
+				textarea(name="i_greentext") #{item_greentext}
+			
+			p Action on player collision
+				textarea(name="i_on_player_collide") #{item_on_player_collide}
+			
+			input(type="submit", name="action", value="Delete")
+			input(type="submit", name="action", value="Save")

@@ -36,10 +36,8 @@ html
 			h2 All Item Placements
 			- foreach(ip; dbconn.get!ItemPlacement())
 				- Item i = dbconn.get!Item(ip.item_uuid);
-				form.item_place(action="server", method="POST")
-					input(type="hidden", name="type", value="place")
-					input(type="hidden", name="room_uuid", value="#{dbconn.get_default_room().uuid}")
-					input(type="hidden", name="target_uuid", value="#{ip.uuid}")
+				form.item_place(action="edit_item_place", method="POST")
+					input(type="hidden", name="item_place_uuid", value="#{ip.uuid}")
 					
 					img(src="#{i.background_url}")
 					h3 #{ip.uuid}
@@ -47,19 +45,13 @@ html
 					p #{"Points to item "~ip.item_uuid}
 					input(type="submit", value="Edit")
 				
-			form.new_place(action="server", method="POST")
-				input(type="hidden", name="type", value="new_place")
-				input(type="hidden", name="room_uuid", value="#{dbconn.get_default_room().uuid}")
-				input(type="hidden", name="target_uuid", value="")
-				
+			form.new_place(action="new_item_place", method="POST")
 				input(type="submit", value="New Place")
 				
 			h2 All Items
 			- foreach(i; dbconn.get!Item())
-				form.item(action="server", method="POST")
-					input(type="hidden", name="type", value="item")
-					input(type="hidden", name="room_uuid", value="#{dbconn.get_default_room().uuid}")
-					input(type="hidden", name="target_uuid", value="#{i.uuid}")
+				form.item(action="edit_item", method="POST")
+					input(type="hidden", name="item_uuid", value="#{i.uuid}")
 					
 					img(src="#{i.background_url}")
 					h3 #{i.uuid}
@@ -67,9 +59,5 @@ html
 					p.oncollide #{i.on_player_collide}
 					input(type="submit", value="Edit")
 					
-			form.new_item(action="server", method="POST")
-				input(type="hidden", name="type", value="new_item")
-				input(type="hidden", name="room_uuid", value="#{dbconn.get_default_room().uuid}")
-				input(type="hidden", name="target_uuid", value="")
-				
+			form.new_item(action="new_item", method="POST")
 				input(type="submit", value="New Item")

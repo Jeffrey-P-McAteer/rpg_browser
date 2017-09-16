@@ -1,4 +1,5 @@
 import ddbc;
+import vibe.vibe;
 
 import room;
 import player;
@@ -64,10 +65,10 @@ T[] get(T)(Connection dbconn = server_dbconn) {
 T get(T)(Connection dbconn, string uuid) {
 	Statement stmt = dbconn.createStatement();
 	scope(exit) stmt.close();
-	stmt.executeQuery("SELECT * FROM "~getTableNameForType!T()~" WHERE uuid='"~uuid~"'"); // SQL Injection Alert
+	stmt.executeQuery("SELECT * FROM "~getTableNameForType!T()~" WHERE uuid=\""~uuid~"\""); // SQL Injection Alert
 	T result;
 	result.uuid = "";
-	foreach(ref e; stmt.select!T) {
+	foreach(ref e; stmt.select!T.where("uuid=\""~uuid~"\"")) {
 		return e;
 	}
 	return result;
@@ -146,6 +147,13 @@ void insertSingle(T)(Connection dbconn, T data) {
 	}
 }
 
+void del(T)(Connection dbconn, string condition) {
+	auto stmt = dbconn.prepareStatement("DELETE FROM "~getTableNameForType!T()~" WHERE "~condition);
+	scope(exit) stmt.close();
+	stmt.executeUpdate();
+}
+
+
 void dropTable(Connection dbconn, string table_name) {
 	auto stmt = dbconn.prepareStatement("DROP TABLE "~table_name);
 	scope(exit) stmt.close();
@@ -210,4 +218,5 @@ void ensure_table_exists(Connection dbconn, string name, string schema) {
 	auto stmt = dbconn.createStatement();
 	scope(exit) stmt.close();
 	stmt.executeUpdate(`CREATE TABLE IF NOT EXISTS `~name~` (`~schema~`)`);
+	
 }

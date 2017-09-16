@@ -2,6 +2,7 @@ import std.string;
 import std.uuid;
 
 import ddbc;
+import vibe.vibe;
 
 import app:dbconn;
 import database;
@@ -57,7 +58,7 @@ Room create_room(Connection dbconn, string uuid) {
 	
 	string post = r.uuid.replace("-", "_");
 	r.table_of_players = "players_for_"~post;
-	r.table_of_item_placements = "items_for_"~post;
+	r.table_of_item_placements = "item_places_for_"~post;
 	dbconn.ensure_table_exists(r.table_of_players, fullSQLSchemaFromType!PlayerTableItem());
 	dbconn.ensure_table_exists(r.table_of_item_placements, fullSQLSchemaFromType!ItemTableItem());
 	
@@ -95,6 +96,20 @@ Player get_player(Connection dbconn, Room r, string uuid) {
 
 ItemPlacement[] places(Connection dbconn, Room r) {
 	ItemPlacement[] ips;
-	// TODO write item placement query
+	ItemTableItem[] uuids = dbconn.get_item_table_items(r.table_of_item_placements);
+	foreach(uuid; uuids) {
+		ips ~= dbconn.get!ItemPlacement(uuid.item_placement_uuid);
+	}
 	return ips;
+}
+
+ItemTableItem[] get_item_table_items(Connection dbconn, string table_name) {
+	Statement stmt = dbconn.createStatement();
+	scope(exit) stmt.close();
+	auto rs = stmt.executeQuery("SELECT * FROM "~table_name);
+	ItemTableItem[] results;
+	while (rs.next()) {
+		results ~= ItemTableItem(rs.getString(1));
+	}
+	return results;
 }

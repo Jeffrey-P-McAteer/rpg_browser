@@ -4,6 +4,7 @@ import vibe.vibe;
 import ddbc;
 
 import room;
+import item;
 import database;
 import app:all_player_sockets,construct_exec,construct_exec_str,dbconn,simple_ascii;
 
@@ -73,6 +74,9 @@ void go_to_room(ref Player p, Room r) {
 	
 	WebSocket ws = all_player_sockets[p.uuid];
 	ws.send(construct_exec_str("setPlayerTo("~obj~");"));
+	foreach(item_place; dbconn.places(r)) {
+		ws.send(construct_exec_str("constructItemPlace("~item_place.ip_to_json()~");"));
+	}
 }
 
 Room get_room(Player p, Connection dbconn) {

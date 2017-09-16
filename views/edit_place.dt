@@ -1,0 +1,27 @@
+- import std.conv;
+
+doctype html
+html
+	head
+		title RPG Browser Server
+		link(rel="shortcut icon", href="favicon.png")
+		link(rel="stylesheet",type="text/css",href="style.css")
+	body
+		form#gamecanvas(action="saveplace", method="POST")
+			- string place_uuid = place.uuid;
+			- string place_item_uuid = place.item_uuid;
+			- string place_x = to!string(place.x);
+			- string place_y = to!string(place.y);
+			
+			h2 Editing #{place_uuid}
+			input(type="hidden", name="ip_uuid", value="#{place_uuid}")
+			
+			p Item this place contains
+				input(type="text", name="ip_item_uuid", value="#{place_item_uuid}")
+			
+			p Coordinates (x/y)
+				input(type="number", name="ip_x", value="#{place_x}")
+				input(type="number", name="ip_y", value="#{place_y}")
+			
+			input(type="submit", name="action", value="Delete")
+			input(type="submit", name="action", value="Save")

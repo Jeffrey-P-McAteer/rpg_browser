@@ -77,3 +77,40 @@ string whitelist_chunk_from_list(string[] whitelist) {
 	}
 	return s;
 }
+
+ItemPlacement create_place(Connection dbconn) {
+	string uuid = randomUUID().toString();
+	return dbconn.create_place(uuid);
+}
+
+ItemPlacement create_place(Connection dbconn, string uuid) {
+	ItemPlacement existing_place = dbconn.get!ItemPlacement(uuid);
+	if (existing_place.uuid.length > 1) return existing_place;
+	ItemPlacement ip = ItemPlacement(uuid, "the-item-uuid", 0, 0);
+	ItemPlacement copy = ip;
+	dbconn.insert!ItemPlacement(copy);
+	return ip;
+}
+
+Item create_item(Connection dbconn) {
+	string uuid = randomUUID().toString();
+	return dbconn.create_item(uuid);
+}
+
+Item create_item(Connection dbconn, string uuid) {
+	Item existing_item = dbconn.get!Item(uuid);
+	if (existing_item.uuid.length > 1) return existing_item;
+	Item item = Item(uuid, "http://site.com/background-url.jpg", 0, 0, "Empty greentext", "# Python code");
+	Item copy = item;
+	dbconn.insert!Item(copy);
+	return item;
+}
+
+string ip_to_json(ItemPlacement ip) {
+	return "{"~
+			 "uuid:\""~ip.uuid~"\","~
+			 "item_uuid:\""~ip.item_uuid~"\","~
+			 "x:"~to!string(ip.x)~","~
+			 "y:"~to!string(ip.y)~","~
+		   "}";
+}

@@ -183,7 +183,8 @@ void get_player_data(WebSocket sock, Json data) {
 }
 
 void get_item_data(WebSocket sock, Json data) {
-	
+	string uuid = data["uuid"].to!string;
+	logInfo("get_item_data called");
 }
 
 // ABOVE funcs handle player socket messages

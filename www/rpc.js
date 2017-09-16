@@ -68,7 +68,7 @@ function constructItemPlace(item_p) {
 	room.item_places.push(item_p);
 	// Ask for actual item
 	ws.send(JSON.stringify({
-		ev_name: "get_item",
+		task: "get_item_data",
 		uuid: item_p.item_uuid,
 	}));
 	render();
