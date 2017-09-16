@@ -93,6 +93,28 @@ void insert(T)(Connection dbconn, T data) {
 	stmt.executeUpdate();
 }
 
+/**
+ * Inserts a new row in a DB table based on a manually given table name
+ */
+void insertManual(T)(Connection dbconn, T data, string table_name) {
+	auto stmt = dbconn.prepareStatement("INSERT INTO "~table_name~
+										" ("~lightSQLSchemaFromType!T()~") VALUES ("~
+										prepStmtSQLSchemaFromType!T()~")");
+	scope(exit) stmt.close();
+	int i = 0;
+	foreach (member_name; __traits(allMembers, T)) {
+		i++;
+		auto data_val = __traits(getMember, data, member_name);
+		static if (__traits(isArithmetic, data_val)) {
+			stmt.setLong(i, data_val);
+		}
+		else {
+			stmt.setString(i, data_val);
+		}
+	}
+	stmt.executeUpdate();
+}
+
 /// Updates a field based on T.uuid, which must be present
 void update(T)(Connection dbconn, T data) {
 	auto stmt = dbconn.prepareStatement("UPDATE "~getTableNameForType!T()~
@@ -122,6 +144,12 @@ void insertSingle(T)(Connection dbconn, T data) {
 	else {
 		dbconn.update!T(data);
 	}
+}
+
+void dropTable(Connection dbconn, string table_name) {
+	auto stmt = dbconn.prepareStatement("DROP TABLE "~table_name);
+	scope(exit) stmt.close();
+	stmt.executeUpdate();
 }
 
 /// Bridges between internal datatypes and databast types

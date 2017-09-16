@@ -21,27 +21,21 @@ html
 				input(type="submit", value="Delete Database")
 				
 			h2 All Rooms
-			- foreach(r; dbconn.dbGet!Room())
-				form.room(action="server", method="POST")
-					input(type="hidden", name="type", value="edit_room")
+			- foreach(r; dbconn.get!Room())
+				form.room(action="edit_room", method="POST")
 					input(type="hidden", name="room_uuid", value="#{r.uuid}")
-					input(type="hidden", name="target_uuid", value="#{r.uuid}")
 					
 					img(src="add_room_thumbnail")
 					h3 #{r.uuid}
 					p #{r.description}
 					input(type="submit", value="Edit Room")
 			
-			form.new_place(action="server", method="POST")
-				input(type="hidden", name="type", value="new_room")
-				input(type="hidden", name="room_uuid", value="")
-				input(type="hidden", name="target_uuid", value="")
-				
+			form.new_place(action="new_room", method="POST")
 				input(type="submit", value="New Room")
 			
 			h2 All Item Placements
-			- foreach(ip; dbconn.dbGet!ItemPlacement())
-				- Item i = dbconn.dbGet!Item(ip.item_uuid);
+			- foreach(ip; dbconn.get!ItemPlacement())
+				- Item i = dbconn.get!Item(ip.item_uuid);
 				form.item_place(action="server", method="POST")
 					input(type="hidden", name="type", value="place")
 					input(type="hidden", name="room_uuid", value="#{dbconn.get_default_room().uuid}")
@@ -61,7 +55,7 @@ html
 				input(type="submit", value="New Place")
 				
 			h2 All Items
-			- foreach(i; dbconn.dbGet!Item())
+			- foreach(i; dbconn.get!Item())
 				form.item(action="server", method="POST")
 					input(type="hidden", name="type", value="item")
 					input(type="hidden", name="room_uuid", value="#{dbconn.get_default_room().uuid}")

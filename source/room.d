@@ -52,7 +52,7 @@ Room create_room(Connection dbconn) {
 
 Room create_room(Connection dbconn, string uuid) {
 	Room existing_room = dbconn.get!Room(uuid);
-	if (existing_room.uuid.length > 0) return existing_room;
+	if (existing_room.uuid.length > 1) return existing_room;
 	Room r = Room(uuid, "Boring name", "Empty description", 150, 200, 100);
 	
 	string post = r.uuid.replace("-", "_");
@@ -98,4 +98,3 @@ ItemPlacement[] places(Connection dbconn, Room r) {
 	// TODO write item placement query
 	return ips;
 }
-

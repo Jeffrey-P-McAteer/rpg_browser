@@ -1,0 +1,55 @@
+- import std.conv;
+
+- import item;
+- import room;
+
+doctype html
+html
+	head
+		title RPG Browser Server
+		link(rel="shortcut icon", href="favicon.png")
+		link(rel="stylesheet",type="text/css",href="style.css")
+		script(src="server.js")
+	body
+		form#gamecanvas(action="saveroom", method="POST")
+			- string room_uuid = room.uuid;
+			- string room_name = room.name;
+			- string room_description = room.description;
+			- string room_spawn_x = to!string(room.spawn_x);
+			- string room_spawn_y = to!string(room.spawn_y);
+			- string room_spawn_radius = to!string(room.spawn_radius);
+			- ItemPlacement[] room_item_places = dbconn.places(room);
+			
+			
+			h2 Editing #{room_uuid}
+			input(type="hidden", name="r_uuid", value="#{room_uuid}")
+			
+			p Name
+				input(type="text", name="r_name", value="#{room_name}")
+			
+			p Description
+				input(type="text", name="r_description", value="#{room_description}")
+			
+			p Spawn x/y/radius
+				input(type="number", name="r_spawn_x", value="#{room_spawn_x}")
+				input(type="number", name="r_spawn_y", value="#{room_spawn_y}")
+				input(type="number", name="r_spawn_radius", value="#{room_spawn_radius}")
+			
+			em
+				<b>Note</b> the below item places and items are the global items - 2 rooms with item UUID "123abc" will both have their item details changed if they are changed in a single room. If you should want similar but different items in each room, assign each room a different item UUID.
+			
+			h3 Room Item Placements
+			input(type="hidden", name="r_table_of_players", value="not_using_this")
+			input(type="hidden", name="r_table_of_item_placements", value="not_using_this_either")
+			div#room_item_places
+				- for (int i=0; i<room_item_places.length; i++)
+					- string i_s = "r_placements_"~to!string(i);
+					- string item_p_uuid = room_item_places[i].uuid;
+					p(id="#{i_s}")
+						input(type="text", name="#{i_s}", value="#{item_p_uuid}")
+						input(type="button", value="Remove", onclick="remove_item_placement('#{i_s}')")
+			input(type="button", value="Add Item Placement UUID", onclick="add_item_placement()")
+			
+			br
+			input(type="submit", name="action", value="Delete")
+			input(type="submit", name="action", value="Save")
