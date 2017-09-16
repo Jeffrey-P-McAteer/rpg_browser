@@ -77,6 +77,8 @@ function constructItemPlace(item_p) {
 function constructItem(item) {
 	var i = getItemIndex(item.uuid);
 	if (i != -1) return;
+	item.background = new Image();
+	item.background.src = item.background_url;
 	room.items.push(item);
 	render();
 }
@@ -111,12 +113,14 @@ function setPlayerTo(p) {
 	}
 	player = p;
 	localStorage.setItem("uuid", player.uuid);
+	render();
 }
 
 function deletePlayer(uuid) {
 	var index_of_player = getPlayerIndex(uuid);
 	if (index_of_player === -1) return;
 	room_players.splice(index_of_player, 1);
+	render();
 }
 
 function movePlayer(uuid, x, y) {
@@ -182,7 +186,7 @@ function rend_item_place(ctx, itm_p) {
 		console.log("We do not have the item for item place ", itm_p.uuid);
 		return;
 	}
-	var item = room_items[item_i];
+	var item = room.items[item_i];
 	ctx.drawImage(item.background, itm_p.x, itm_p.y, item.width, item.height);
 	
 }

@@ -184,7 +184,8 @@ void get_player_data(WebSocket sock, Json data) {
 
 void get_item_data(WebSocket sock, Json data) {
 	string uuid = data["uuid"].to!string;
-	logInfo("get_item_data called");
+	Item i = dbconn.get!Item(uuid);
+	sock.send(construct_exec("constructItem(%s)", i.i_to_json()).toString());
 }
 
 // ABOVE funcs handle player socket messages

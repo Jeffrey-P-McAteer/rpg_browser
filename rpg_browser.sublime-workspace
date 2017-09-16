@@ -264,10 +264,22 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 486.0,
-		"last_filter": "",
+		"height": 564.0,
+		"last_filter": "commi",
 		"selected_items":
 		[
+			[
+				"commi",
+				"Git: Commit"
+			],
+			[
+				"add",
+				"Git: Add All"
+			],
+			[
+				"git commi",
+				"Git: Commit"
+			],
 			[
 				"menu",
 				"View: Toggle Menu"
@@ -303,14 +315,6 @@
 			[
 				"push",
 				"Git: Push"
-			],
-			[
-				"commi",
-				"Git: Commit"
-			],
-			[
-				"add",
-				"Git: Add All"
 			],
 			[
 				"commit",
@@ -437,11 +441,25 @@
 	},
 	"file_history":
 	[
+		"/j/projects/rpg_browser_rewrite/www/rpc.js",
+		"/j/projects/rpg_browser_rewrite/source/player.d",
+		"/j/projects/rpg_browser_rewrite/source/item.d",
+		"/j/projects/rpg_browser_rewrite/source/room.d",
+		"/j/projects/rpg_browser_rewrite/views/edit_room.dt",
+		"/j/projects/rpg_browser_rewrite/source/app.d",
+		"/j/projects/rpg_browser_rewrite/source/webapp.d",
+		"/j/projects/rpg_browser_rewrite/source/database.d",
+		"/j/school/cs361/Assignment2/main.cpp",
+		"/j/projects/rpg_browser_rewrite/www/server.js",
+		"/j/projects/rpg_browser_rewrite/views/edit_place.dt",
+		"/j/projects/rpg_browser_rewrite/views/edit_item.dt",
+		"/j/projects/rpg_browser_rewrite/views/server.dt",
+		"/j/projects/jeff_arch/first_boot.sh",
+		"/j/projects/rpg_browser_rewrite/.gitignore",
+		"/j/projects/rpg_browser/source/database.d",
 		"/j/projects/rpg_browser/source/app.d",
 		"/j/projects/rpg_browser/views/server.dt",
 		"/j/projects/rpg_browser_rewrite/www/client.js",
-		"/j/projects/rpg_browser_rewrite/source/database.d",
-		"/j/projects/rpg_browser_rewrite/source/room.d",
 		"/j/bin/sixmin.d",
 		"/j/projects/rpg_browser_rewrite/std.json.JSONException@std/json.d",
 		"/run/media/jeffrey/White/Torrents/[TorrentCounter.cc].Your.Name.2016.ESubs.1080p.BluRay.x264/Kimi no Na wa. Your Name .1080p.BlueRay.HDChina.en.srt",
@@ -450,18 +468,12 @@
 		"/j/projects/rpg_browser/source/item.d",
 		"/j/projects/rpg_browser_rewrite/core.exception.RangeError@source/player.d",
 		"/j/projects/rpg_browser/www/script.js",
-		"/j/projects/rpg_browser_rewrite/www/rpc.js",
-		"/j/projects/rpg_browser_rewrite/source/item.d",
-		"/j/projects/rpg_browser/source/database.d",
-		"/j/projects/rpg_browser_rewrite/source/player.d",
 		"/j/.config/sublime-text-3/Packages/User/TodoReview.sublime-settings",
 		"/j/.config/sublime-text-3/Packages/TodoReview/TodoReview.sublime-settings",
 		"/j/projects/music_spectro/experiment.py",
 		"/j/projects/rpg_browser_rewrite/views/client.dt",
 		"/j/projects/rpg_browser_rewrite/rpg_browser.sublime-project",
-		"/j/projects/rpg_browser_rewrite/source/webapp.d",
 		"/j/projects/rpg_browser_rewrite/dub.json",
-		"/j/projects/rpg_browser_rewrite/.gitignore",
 		"/j/projects/rpg_browser/dub.json",
 		"/j/.config/sublime-text-3/Packages/User/Git.sublime-settings",
 		"/j/.config/sublime-text-3/Packages/Git/Git.sublime-settings",
@@ -473,7 +485,6 @@
 		"/j/projects/jeff_arch/tar_backup_files.txt",
 		"/j/.config/sublime-text-3/Packages/DKit/DKit.sublime-settings",
 		"/j/.config/sublime-text-3/Packages/User/DKit.sublime-settings",
-		"/j/projects/jeff_arch/first_boot.sh",
 		"/j/projects/rpg_browser/app.d"
 	],
 	"find":
@@ -492,6 +503,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"place",
+			"dbDelete",
+			"dbUpdate",
+			"create_place",
+			"ip",
+			"ItemPlacement",
+			"dbGet",
 			"json",
 			"get_player_data",
 			"room_items",
@@ -612,14 +630,7 @@
 			"Unit",
 			"unit",
 			"picture",
-			"\n",
-			"ie_support, custom_css, agency_logo",
-			"favicon_url",
-			", custom_css",
-			"ie_support,",
-			"main",
-			"Nullable!ServerData",
-			"agency_name"
+			"\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -667,7 +678,7 @@
 	"menu_visible": false,
 	"output.exec":
 	{
-		"height": 445.0
+		"height": 37.0
 	},
 	"output.find_results":
 	{

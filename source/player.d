@@ -74,8 +74,16 @@ void go_to_room(ref Player p, Room r) {
 	
 	WebSocket ws = all_player_sockets[p.uuid];
 	ws.send(construct_exec_str("setPlayerTo("~obj~");"));
+	
 	foreach(item_place; dbconn.places(r)) {
 		ws.send(construct_exec_str("constructItemPlace("~item_place.ip_to_json()~");"));
+	}
+	
+	// Notify other players in room that player has joined
+	foreach(player; dbconn.players(r)) {
+		if (player.uuid == p.uuid) continue; // Ignore our player
+		if (!all_player_sockets.get(player.uuid, null)) continue; // Skip players in the room who we do not have a socket for (why are they here?)
+		all_player_sockets[player.uuid].send(construct_exec_str("createPlayer("~obj~");"));
 	}
 }
 

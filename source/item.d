@@ -106,6 +106,16 @@ Item create_item(Connection dbconn, string uuid) {
 	return item;
 }
 
+string i_to_json(Item i) {
+	return "{"~
+			 "uuid:\""~i.uuid~"\","~
+			 "background_url:\""~i.background_url~"\","~
+			 "width:"~to!string(i.width)~","~
+			 "height:"~to!string(i.height)~","~
+			 "greentext:\""~i.greentext~"\","~
+		   "}";
+}
+
 string ip_to_json(ItemPlacement ip) {
 	return "{"~
 			 "uuid:\""~ip.uuid~"\","~
