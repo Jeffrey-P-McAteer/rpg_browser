@@ -1,0 +1,10 @@
+doctype html
+html
+	head
+		title RPG Browser Client
+		link(rel="shortcut icon", href="favicon.png")
+		link(rel="stylesheet",type="text/css",href="style.css")
+		script(src="client.js")
+		script(src="rpc.js")
+	body
+		canvas#gamecanvas

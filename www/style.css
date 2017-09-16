@@ -1,0 +1,73 @@
+html, body {
+	background: #000;
+	font-family: sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+h1, h2, h3, h4, p {
+	padding-left: 4pt;
+}
+
+h3 {
+	margin: 0;
+}
+
+#gamecanvas {
+	background: #404040;
+	color: #e0e0e0;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	overflow-y: scroll;
+}
+
+form {
+	padding: 4pt !important;
+}
+
+form.room, form.item_place, form.item {
+	border: solid 1px black;
+	border-radius: 2pt;
+	margin: 4pt;
+	padding: 2pt 4pt;
+	width: 250pt;
+	display: inline-block;
+}
+
+form.room {
+	height: 120pt;
+}
+form.item_place {
+	height: 110pt;
+}
+form.item {
+	height: 140pt;
+}
+
+form.room img, form.item_place img, form.item img {
+	width: 50pt;
+	height: auto;
+	float: right;
+}
+
+form.item_place p, form.item p {
+	margin: 1pt;
+}
+
+p.greentext {
+	color: green;
+}
+
+p.oncollide {
+	color: brown;
+}
+
+form.new_item, form.new_place {
+	margin: 4pt;
+}

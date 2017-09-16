@@ -1,0 +1,733 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"send",
+				"send_to_player"
+			],
+			[
+				"item_",
+				"item_places"
+			],
+			[
+				"disk_",
+				"disk_passphrase"
+			],
+			[
+				"esx",
+				"esxi_name_file"
+			],
+			[
+				"PID",
+				"PID_FILE"
+			],
+			[
+				"mpd",
+				"mpd_song_name"
+			],
+			[
+				"source",
+				"source_tool_record_id"
+			],
+			[
+				"Hard",
+				"HardwareUnit"
+			],
+			[
+				"H",
+				"HardwareUnit"
+			],
+			[
+				"ex",
+				"executeUpdate"
+			],
+			[
+				"license",
+				"license-index"
+			],
+			[
+				"standar",
+				"standardized"
+			],
+			[
+				"boxCoo",
+				"boxToGridCoord"
+			],
+			[
+				"boxCol",
+				"boxColAbove"
+			],
+			[
+				"grid",
+				"gridSize"
+			],
+			[
+				"ngin",
+				"nginx_log_path〔variable〕"
+			],
+			[
+				"other",
+				"other_vm"
+			],
+			[
+				"ave",
+				"average_steps_meth1"
+			],
+			[
+				"bright",
+				"brightness_file"
+			],
+			[
+				"def",
+				"default_port"
+			],
+			[
+				"fin",
+				"findSplit"
+			],
+			[
+				"TMP",
+				"TMP_PUB_KEY"
+			],
+			[
+				"NEW_US",
+				"NEW_USER_PASS"
+			],
+			[
+				"NEW",
+				"NEW_USER"
+			],
+			[
+				"NEW_",
+				"NEW_VM_IP"
+			],
+			[
+				"upda",
+				"update_song"
+			],
+			[
+				"mount",
+				"mounted_pools〔variable〕"
+			],
+			[
+				"moun",
+				"mountpoint〔variable〕"
+			],
+			[
+				"run",
+				"run_command〔function〕"
+			],
+			[
+				"hour",
+				"hourToBrightness〔function〕"
+			],
+			[
+				"ArrayLi",
+				"ARRAYLIST\tJava Class"
+			],
+			[
+				"hand",
+				"handle()\tfunc"
+			],
+			[
+				"keys",
+				"keys()\tfunc"
+			],
+			[
+				"Syste",
+				"I-SystemClipboard\tinit"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"ind",
+				"index_file_location"
+			],
+			[
+				"print",
+				"printStackTrace"
+			],
+			[
+				"ssh",
+				"SSHCommand"
+			],
+			[
+				"Depl",
+				"DeployServerUser"
+			],
+			[
+				"maze",
+				"mazeRows"
+			],
+			[
+				"curr",
+				"currRow"
+			],
+			[
+				"en",
+				"entranceCol"
+			],
+			[
+				"ent",
+				"entranceRow"
+			]
+		]
+	},
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/D/D.sublime-build",
+					""
+				],
+				[
+					"Packages/DKit/D.sublime-build",
+					""
+				],
+				[
+					"Packages/DKit/D.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/DKit/D.sublime-build",
+					"dub"
+				],
+				[
+					"Packages/DKit/D.sublime-build",
+					"dub (single file)"
+				],
+				[
+					"Packages/DKit/D.sublime-build",
+					"dub build"
+				],
+				[
+					"Packages/DKit/D.sublime-build",
+					"dub build (single file)"
+				],
+				[
+					"Packages/DKit/D.sublime-build",
+					"dub test"
+				]
+			],
+			[
+				"Packages/DKit/D.sublime-build",
+				"dub"
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 486.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"menu",
+				"View: Toggle Menu"
+			],
+			[
+				"todo",
+				"TodoReview: Open Files"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
+				"dub",
+				"DKit: Create DUB Package File"
+			],
+			[
+				"build",
+				"Build With: D - dub build"
+			],
+			[
+				"proje",
+				"Project: Save As"
+			],
+			[
+				"push",
+				"Git: Push"
+			],
+			[
+				"commi",
+				"Git: Commit"
+			],
+			[
+				"add",
+				"Git: Add All"
+			],
+			[
+				"commit",
+				"Git: Commit history"
+			],
+			[
+				"buil",
+				"Build: Cancel"
+			],
+			[
+				"dkit",
+				"DKit: Create Project From DUB Package File"
+			],
+			[
+				"togg",
+				"Toggle Comment"
+			],
+			[
+				"dki",
+				"DKit: Update Project"
+			],
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"show",
+				"SFTP: Show Panel"
+			],
+			[
+				"wra",
+				"Word Wrap: Toggle"
+			],
+			[
+				"wrap",
+				"Word Wrap: Toggle"
+			],
+			[
+				"pre",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"floobits",
+				"Floobits - Leave Workspace"
+			],
+			[
+				"floob",
+				"Floobits - Share Directory (Public)"
+			],
+			[
+				"new",
+				"Floobits - Join Workspace"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remot",
+				"Remote Edit: Open Remote File Prompt"
+			],
+			[
+				"gis",
+				"Gist: Create Public Gist"
+			],
+			[
+				"gist",
+				"Gist: Create Public Gist"
+			],
+			[
+				"view",
+				"View: Toggle Menu"
+			],
+			[
+				"direc",
+				"Package Control: Discover Packages"
+			],
+			[
+				"open",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"setting",
+				"Preferences: Settings"
+			],
+			[
+				"browse",
+				"Preferences: Browse Packages"
+			],
+			[
+				"packa",
+				"Package Control: Discover Packages"
+			]
+		],
+		"width": 789.0
+	},
+	"console":
+	{
+		"height": 213.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/j/projects/rpg_browser/source/app.d",
+		"/j/projects/rpg_browser/views/server.dt",
+		"/j/projects/rpg_browser_rewrite/www/client.js",
+		"/j/projects/rpg_browser_rewrite/source/database.d",
+		"/j/projects/rpg_browser_rewrite/source/room.d",
+		"/j/bin/sixmin.d",
+		"/j/projects/rpg_browser_rewrite/std.json.JSONException@std/json.d",
+		"/run/media/jeffrey/White/Torrents/[TorrentCounter.cc].Your.Name.2016.ESubs.1080p.BluRay.x264/Kimi no Na wa. Your Name .1080p.BlueRay.HDChina.en.srt",
+		"/run/media/jeffrey/White/Torrents/[TorrentCounter.cc].Your.Name.2016.ESubs.1080p.BluRay.x264/yourname.srt",
+		"/j/projects/rpg_browser/readme.md",
+		"/j/projects/rpg_browser/source/item.d",
+		"/j/projects/rpg_browser_rewrite/core.exception.RangeError@source/player.d",
+		"/j/projects/rpg_browser/www/script.js",
+		"/j/projects/rpg_browser_rewrite/www/rpc.js",
+		"/j/projects/rpg_browser_rewrite/source/item.d",
+		"/j/projects/rpg_browser/source/database.d",
+		"/j/projects/rpg_browser_rewrite/source/player.d",
+		"/j/.config/sublime-text-3/Packages/User/TodoReview.sublime-settings",
+		"/j/.config/sublime-text-3/Packages/TodoReview/TodoReview.sublime-settings",
+		"/j/projects/music_spectro/experiment.py",
+		"/j/projects/rpg_browser_rewrite/views/client.dt",
+		"/j/projects/rpg_browser_rewrite/rpg_browser.sublime-project",
+		"/j/projects/rpg_browser_rewrite/source/webapp.d",
+		"/j/projects/rpg_browser_rewrite/dub.json",
+		"/j/projects/rpg_browser_rewrite/.gitignore",
+		"/j/projects/rpg_browser/dub.json",
+		"/j/.config/sublime-text-3/Packages/User/Git.sublime-settings",
+		"/j/.config/sublime-text-3/Packages/Git/Git.sublime-settings",
+		"/j/projects/rpg_browser/www/server.js",
+		"/j/projects/rpg_browser/www/style.css",
+		"/j/projects/rpg_browser/source/room.d",
+		"/j/projects/rpg_browser/project.sublime-project",
+		"/j/projects/rpg_browser/.dub/packages/vibe-d-0.8.0/vibe-d/http/vibe/http/server.d",
+		"/j/projects/jeff_arch/tar_backup_files.txt",
+		"/j/.config/sublime-text-3/Packages/DKit/DKit.sublime-settings",
+		"/j/.config/sublime-text-3/Packages/User/DKit.sublime-settings",
+		"/j/projects/jeff_arch/first_boot.sh",
+		"/j/projects/rpg_browser/app.d"
+	],
+	"find":
+	{
+		"height": 59.0
+	},
+	"find_in_files":
+	{
+		"height": 155.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"json",
+			"get_player_data",
+			"room_items",
+			"x",
+			"go_to_room",
+			"orig",
+			"def_room",
+			"x",
+			"def_room",
+			"\t\"",
+			"  \"",
+			"nickname",
+			"table_name",
+			" ",
+			"x",
+			"om_",
+			";\n",
+			"room_name",
+			" \"~",
+			"\"/de",
+			"\"",
+			"'",
+			"item_uuid",
+			"item.",
+			" ",
+			"item_",
+			"item.",
+			"width",
+			"item.uuid",
+			"//",
+			"e=\"",
+			" name=\"",
+			"y",
+			"x",
+			"item",
+			"send_to_player",
+			"place.width",
+			"i.",
+			"table_of_items",
+			"room_itemplaces",
+			"x",
+			"p.",
+			"current_sockets",
+			"p.",
+			"none",
+			"player",
+			"Player",
+			"player",
+			" ",
+			"]).",
+			"<=",
+			"h = p",
+			"int",
+			"p1len",
+			"<",
+			"p2",
+			"p1",
+			"\t#",
+			"o.N68NjrEhV9xJjGx5DGw1b9yohAP1VvZX",
+			"\\\"",
+			" ",
+			"ng cmd",
+			"args[2]",
+			"\n   ",
+			"inventory",
+			"output",
+			" ",
+			"xrandr",
+			"ws11",
+			"room_players",
+			"index_of_player",
+			".x",
+			"the_room",
+			"x",
+			"width",
+			"x",
+			"dis[",
+			"\n.",
+			", Player(",
+			"INT",
+			"int",
+			"INT",
+			"int",
+			"str",
+			"ServerData",
+			"\"",
+			"mpv",
+			" ",
+			".replace(\"â\", \"-\")",
+			"'",
+			"\"",
+			"1pt",
+			" ",
+			"runRemoteControl",
+			"today_dir",
+			"       ",
+			"          ",
+			"         ",
+			"        ",
+			"       ",
+			"Blade",
+			"disk_",
+			"\": ",
+			"evil-tech.com\":",
+			"blade1",
+			"# ",
+			"\"a",
+			", ",
+			"dev/null",
+			"+g",
+			" ",
+			"PID_FILE",
+			" ",
+			"  check",
+			" '$",
+			" = '",
+			"= '/",
+			"Unit",
+			"unit",
+			"picture",
+			"\n",
+			"ie_support, custom_css, agency_logo",
+			"favicon_url",
+			", custom_css",
+			"ie_support,",
+			"main",
+			"Nullable!ServerData",
+			"agency_name"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 55.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.exec":
+	{
+		"height": 445.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 201.0
+	},
+	"output.sftp":
+	{
+		"height": 37.0
+	},
+	"pinned_build_system": "",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				""
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 394.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

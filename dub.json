@@ -1,0 +1,25 @@
+{
+	"name": "rpg_browser",
+	"authors": [
+		"Jeffrey McAteer <jeffrey.p.mcateer@gmail.com>"
+	],
+	"versions": [
+		"Have_Botan", "Botan"
+	],
+	"dependencies": {
+		"vibe-d": "~>0.8.0",
+		"vibe-d:tls": "~>0.8.0",
+		"ddbc": "~>0.3.7",
+		"ddox": "~>0.16.2",
+		"pyd": "~>0.9.9",
+	},
+	"subConfigurations": {
+		"vibe-d:tls": "botan",
+	},
+	"preBuildCommands": [
+		"killall rpg_browser || true"
+	],
+	"description": "A highly interopable RPG server/client",
+	"copyright": "Copyright © 2017, Jeffrey McAteer <jeffrey.p.mcateer@gmail.com>",
+	"license": "GPL v2.0"
+}
