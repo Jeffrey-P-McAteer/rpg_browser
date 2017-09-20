@@ -43,6 +43,17 @@ function fullRender() {
 }
 window.onresize = fullRender;
 
+function notify(message) {
+	var elm = document.getElementById("notifications");
+	var note = document.createElement("div");
+	note.className = "notification";
+	note.textContent = message;
+	elm.appendChild(note);
+	setTimeout(function() {
+		elm.removeChild(note);
+	}, 3600);
+}
+
 function clear_room() {
 	window.player = {
 		uuid: localStorage.getItem("uuid") + "", // Will be "null" or "none" if not known

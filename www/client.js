@@ -35,6 +35,7 @@ window.onload = function() {
 			task: "player_connected",
 			uuid: player.uuid
 		}));
+		notify("Server connected.");
 	};
 	
 	ws.onmessage = function(event) {
@@ -53,6 +54,7 @@ window.onload = function() {
 	
 	ws.onclose = function() {
 		console.log("Socket closed");
+		notify("Lost connection with server.");
 		// TODO alert user, clean up, etc.
 	};
 };

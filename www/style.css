@@ -74,3 +74,17 @@ p.oncollide {
 form.new_item, form.new_place {
 	margin: 4pt;
 }
+
+div#notifications {
+	position: absolute;
+	top: 0pt;
+	right: 10pt;
+	width: 360pt;
+}
+
+div.notification {
+	margin: 4pt;
+	padding: 4pt 6pt;
+	background: #586e75;
+	color: #002b36;
+}

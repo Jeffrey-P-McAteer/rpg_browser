@@ -70,6 +70,7 @@ void handle_collision(Item i, ItemPlacement ip, Player p, Player old_p,
 		send_to_player(p.uuid, "alert('this item tried to do something nasty')");
 		logInfo(to!string(ex));
 	}
+	send_to_player(p.uuid, "notify('"~i.greentext.replace("'", " ")~"')");
 }
 
 string whitelist_chunk_from_list(string[] whitelist) {

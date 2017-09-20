@@ -8,3 +8,4 @@ html
 		script(src="rpc.js")
 	body
 		canvas#gamecanvas
+		div#notifications
