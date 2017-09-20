@@ -93,6 +93,7 @@ void on_websocket_connection(scope WebSocket sock) {
 			string msg_copy = msg;
 			if (msg.length < 1) continue;
 			Json data = parseJson(msg);
+			//logInfo(data.toString());
 			switch (data["task"].get!string()) {
 				case "player_connected":
 					player_uuid = player_connected(sock, data);
@@ -104,7 +105,8 @@ void on_websocket_connection(scope WebSocket sock) {
 					break;
 				
 				case "get_player_data":
-					get_player_data(sock, data);
+					Player p = dbconn.get!Player(player_uuid);
+					get_player_data(sock, data, p);
 					break;
 				
 				case "get_item_data":
@@ -152,34 +154,44 @@ string player_connected(WebSocket sock, Json data) {
 	return player_uuid;
 }
 
-void player_moved(WebSocket sock, Json data, Player player) {
-	Player orig = player;
+void player_moved(WebSocket sock, Json data, Player p) {
+	Player orig = p;
 	// ^ kept so we can refer to previous player location data
-	Player p = orig;
 	p.x = data["x"].to!long;
 	p.y = data["y"].to!long;
+	dbconn.update!Player(p);
+	
 	Room r = p.get_room(dbconn);
 	ItemPlacement[] item_places = dbconn.places(r);
 	foreach (place; item_places) {
-		bool x_collide = p.x+50 > place.x && p.x < place.x+50;
-		bool y_collide = p.y+50 > place.y && p.y < place.y+50;
-		if (x_collide && y_collide) {
+		if (has_collided(p, place)) {
 			Item i = dbconn.get!Item(place.item_uuid);
 			auto context = new InterpContext();
-			i.handle_collision(place, p, orig, dbconn, sock, context, &send_to_player, &send_to_all);
+			i.handle_collision(place, p, orig, dbconn, sock, context, &send_to_player, &send_to_all, &send_player_to_room);
 		}
 	}
-	
-	foreach(s; all_player_sockets) {
-		if (!s.connected) continue;
-		s.send(construct_exec("movePlayer('%s', %d, %d)", p.uuid, p.x, p.y).toString());
+	// May have changed
+	r = p.get_room(dbconn);
+	foreach(uuid; all_player_sockets.keys) {
+		if (!all_player_sockets[uuid].connected) continue;
+		Player other_p = dbconn.get!Player(uuid);
+		if (other_p.room_uuid != r.uuid) continue; // don't send move commands to players not in same room
+		all_player_sockets[uuid].send(construct_exec("movePlayer('%s', %d, %d)", p.uuid, p.x, p.y).toString());
 	}
-	dbconn.update(p);
+	
+	sock.send(construct_exec("move_lock = false;").toString()); // allow player to do new move
 }
 
-void get_player_data(WebSocket sock, Json data) {
-	Player p = dbconn.get!Player(data["uuid"].get!string);
-	sock.send(construct_exec("createPlayer(%s)", p.to_json()).toString());
+bool has_collided(Player p, ItemPlacement place) {
+	bool x_collide = p.x+50 > place.x && p.x < place.x+50;
+	bool y_collide = p.y+50 > place.y && p.y < place.y+50;
+	return x_collide && y_collide;
+}
+
+void get_player_data(WebSocket sock, Json data, Player us) {
+	Player other_player = dbconn.get!Player(data["uuid"].get!string);
+	if (us.room_uuid != other_player.room_uuid) return; // Don't give details if the players aren't in the same room
+	sock.send(construct_exec("createPlayer(%s)", other_player.to_json()).toString());
 }
 
 void get_item_data(WebSocket sock, Json data) {
@@ -203,6 +215,12 @@ void send_to_all(string message) {
 		if (!s.connected) continue;
 		s.send(construct_exec(message).toString());
 	}
+}
+
+void send_player_to_room(string player_uuid, string room_uuid) {
+	Player p = dbconn.get!Player(player_uuid);
+	Room r = dbconn.get!Room(room_uuid);
+	p.go_to_room(r);
 }
 
 // Helpers

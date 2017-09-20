@@ -26,6 +26,8 @@ window.onload = function() {
 	var port_piece = location.port == '' ? '' : ':'+location.port;
 	ws = new WebSocket('ws://'+location.hostname+port_piece+'/ws');
 	
+	clear_room();
+	
 	ws.onopen = function() {
 		console.log("Socket opened");
 		fullRender();

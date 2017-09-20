@@ -120,7 +120,7 @@ void insertManual(T)(Connection dbconn, T data, string table_name) {
 void update(T)(Connection dbconn, T data) {
 	auto stmt = dbconn.prepareStatement("UPDATE "~getTableNameForType!T()~
 										" SET "~prepStmtUpdateSQLSchemaFromType!T()~
-										" WHERE uuid='"~data.uuid~"'"); // todo remove sql injection vuln
+										" WHERE uuid=\""~data.uuid~"\""); // todo remove sql injection vuln
 	scope(exit) stmt.close();
 	int i = 0;
 	foreach (member_name; __traits(allMembers, T)) {
@@ -139,7 +139,7 @@ void update(T)(Connection dbconn, T data) {
 /// Inserts a new row in a DB table defined by the datatype, only if it does not already exist by 'uuid' parameter
 void insertSingle(T)(Connection dbconn, T data) {
 	T existing = dbconn.get!T(data.uuid);
-	if (existing.uuid.length < 1) {
+	if (existing.uuid.length < 2) {
 		dbconn.insert!T(data);
 	}
 	else {
@@ -195,7 +195,7 @@ string prepStmtSQLSchemaFromType(T)() {
 	import std.traits;
 	string schema;
 	foreach (member_name; __traits(allMembers, T)) {
-		schema ~= "? , ";
+		schema ~= "?, ";
 	}
 	return schema[0..(schema.length - 2)]; // Trim last ", "
 }

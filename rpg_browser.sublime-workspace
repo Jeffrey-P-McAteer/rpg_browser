@@ -264,10 +264,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 564.0,
-		"last_filter": "commi",
+		"height": 675.0,
+		"last_filter": "todo",
 		"selected_items":
 		[
+			[
+				"todo",
+				"TodoReview: Project Files"
+			],
 			[
 				"commi",
 				"Git: Commit"
@@ -283,10 +287,6 @@
 			[
 				"menu",
 				"View: Toggle Menu"
-			],
-			[
-				"todo",
-				"TodoReview: Open Files"
 			],
 			[
 				"install",
@@ -441,6 +441,13 @@
 	},
 	"file_history":
 	[
+		"/j/projects/rpg_browser/source/database.d",
+		"/j/projects/rpg_browser/www/client.js",
+		"/j/config/lists/songs.csv",
+		"/j/projects/rpg_browser/www/style.css",
+		"/j/projects/rpg_browser/source/player.d",
+		"/j/projects/rpg_browser/source/room.d",
+		"/j/projects/rpg_browser/www/rpc.js",
 		"/j/projects/rpg_browser_rewrite/www/rpc.js",
 		"/j/projects/rpg_browser_rewrite/source/player.d",
 		"/j/projects/rpg_browser_rewrite/source/item.d",
@@ -456,7 +463,6 @@
 		"/j/projects/rpg_browser_rewrite/views/server.dt",
 		"/j/projects/jeff_arch/first_boot.sh",
 		"/j/projects/rpg_browser_rewrite/.gitignore",
-		"/j/projects/rpg_browser/source/database.d",
 		"/j/projects/rpg_browser/source/app.d",
 		"/j/projects/rpg_browser/views/server.dt",
 		"/j/projects/rpg_browser_rewrite/www/client.js",
@@ -478,8 +484,6 @@
 		"/j/.config/sublime-text-3/Packages/User/Git.sublime-settings",
 		"/j/.config/sublime-text-3/Packages/Git/Git.sublime-settings",
 		"/j/projects/rpg_browser/www/server.js",
-		"/j/projects/rpg_browser/www/style.css",
-		"/j/projects/rpg_browser/source/room.d",
 		"/j/projects/rpg_browser/project.sublime-project",
 		"/j/projects/rpg_browser/.dub/packages/vibe-d-0.8.0/vibe-d/http/vibe/http/server.d",
 		"/j/projects/jeff_arch/tar_backup_files.txt",
@@ -503,6 +507,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pt.uuid",
+			"rs =",
+			"Stuck In The Sound",
+			"80",
+			"40",
 			"place",
 			"dbDelete",
 			"dbUpdate",
@@ -625,12 +634,7 @@
 			" ",
 			"  check",
 			" '$",
-			" = '",
-			"= '/",
-			"Unit",
-			"unit",
-			"picture",
-			"\n"
+			" = '"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -713,12 +717,12 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 900.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 684.0
 	},
 	"select_symbol":
 	{

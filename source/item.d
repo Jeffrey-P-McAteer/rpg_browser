@@ -45,15 +45,17 @@ struct Item {
  */
 void handle_collision(Item i, ItemPlacement ip, Player p, Player old_p,
 					  Connection dbconn, WebSocket sock, InterpContext ctx,
-					  void function(string, string) send_to_player, void function(string)  send_to_all) {
+					  void function(string, string) send_to_player, void function(string)  send_to_all, void function(string, string) send_player_to_room) {
 	ctx.send_to_all = send_to_all;
 	ctx.send_to_player = send_to_player;
+	ctx.send_player_to_room = send_player_to_room;
+	
 	ctx.item = i.uuid;
 	ctx.player = p.uuid;
 	ctx.untrusted_code = i.on_player_collide;
 	// Run python scriptlet in a restricted environment
 	string[] whitelist = [
-		"send_to_all", "send_to_player",
+		"send_to_all", "send_to_player", "send_player_to_room",
 		"item", "player"
 	];
 	try {

@@ -7,7 +7,7 @@ function render() {
 	var ctx = gamecanvas.getContext('2d');
 	ctx.clearRect(0, 0, gamecanvas.width, gamecanvas.height);
 	// Draw the room
-	ctx.fillStyle = "#e0e0e9";
+	ctx.fillStyle = "#839496"; // base0
 	ctx.font = '36px sans';
 	ctx.fillText('RPG Browser Client', 10, 40);
 	
@@ -43,7 +43,26 @@ function fullRender() {
 }
 window.onresize = fullRender;
 
+function clear_room() {
+	window.player = {
+		uuid: localStorage.getItem("uuid") + "", // Will be "null" or "none" if not known
+		x: 0,
+		y: 0,
+		avatar: new Image(),
+	};
+
+	window.room = {
+		uuid: '',
+		name: '',
+		items: [],
+		item_places: [],
+		players: [],
+	};
+}
+
+var move_lock = false;
 function move(delta_x, delta_y) {
+	if (move_lock) return;
 	// Do local move
 	player.x += delta_x;
 	player.y += delta_y;
@@ -55,6 +74,7 @@ function move(delta_x, delta_y) {
 		y: player.y,
 		avatar: player.avatar.src
 	}));
+	move_lock = true;
 	render();
 }
 
@@ -93,6 +113,10 @@ function createPlayer(p) {
 		p.avatar = new Image();
 		p.avatar.src = tmp;
 	}
+	if (p.uuid == player.uuid) {
+		setPlayerTo(p); // log error?
+		return;
+	}
 	var i = getPlayerIndex(p.uuid);
 	if (i == -1) {
 		room.players.push(p);
@@ -119,11 +143,16 @@ function setPlayerTo(p) {
 function deletePlayer(uuid) {
 	var index_of_player = getPlayerIndex(uuid);
 	if (index_of_player === -1) return;
-	room_players.splice(index_of_player, 1);
+	room.players.splice(index_of_player, 1);
 	render();
 }
 
 function movePlayer(uuid, x, y) {
+	if (uuid == player.uuid) {
+		player.x = x;
+		player.y = y;
+		return;
+	}
 	var index_of_player = getPlayerIndex(uuid);
 	if (index_of_player == -1) {
 		ws.send(JSON.stringify({

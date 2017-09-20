@@ -37,13 +37,13 @@ struct Room {
 // Represents a single player UUID held in table_of_players, which is serialized into Room.players
 struct PlayerTableItem {
 	@("TEXT")
-	string player_uuid;
+	string uuid;
 }
 
 // Represents a single item UUID held in table_of_item_placements, which is serialized into Room.items
 struct ItemTableItem { // Each of these is of TYPE ItemPlacement, not Item.
 	@("TEXT")
-	string item_placement_uuid;
+	string uuid;
 }
 
 Room create_room(Connection dbconn) {
@@ -77,12 +77,6 @@ long get_spawn_coord(Room r, long x_or_y) {
 	return uniform(x_or_y - r.spawn_radius, x_or_y + r.spawn_radius);
 }
 
-Player[] players(Connection dbconn, Room r) {
-	Player[] p;
-	// TODO Write player database query
-	return p;
-}
-
 Player get_player(Connection dbconn, Room r, string uuid) {
 	Player[] ps = dbconn.players(r);
 	foreach (p; ps) {
@@ -94,13 +88,38 @@ Player get_player(Connection dbconn, Room r, string uuid) {
 	return p;
 }
 
+Player[] players(Connection dbconn, Room r) {
+	Player[] p;
+	PlayerTableItem[] ptis = dbconn.get_player_table_items(r.table_of_players);
+	foreach(pt; ptis) {
+		//dbconn.get_player(r, pt.player_uuid);
+		p ~= dbconn.get!Player(pt.uuid);
+	}
+	return p;
+}
+
 ItemPlacement[] places(Connection dbconn, Room r) {
 	ItemPlacement[] ips;
 	ItemTableItem[] uuids = dbconn.get_item_table_items(r.table_of_item_placements);
 	foreach(uuid; uuids) {
-		ips ~= dbconn.get!ItemPlacement(uuid.item_placement_uuid);
+		ips ~= dbconn.get!ItemPlacement(uuid.uuid);
 	}
 	return ips;
+}
+
+PlayerTableItem[] get_player_table_items(Connection dbconn, string table_name) {
+	PlayerTableItem[] results;
+	if (table_name.length < 1) { // Why does this happen?
+		return results;
+	}
+	Statement stmt = dbconn.createStatement();
+	scope(exit) stmt.close();
+	
+	auto rs = stmt.executeQuery("SELECT * FROM "~table_name);
+	while (rs.next()) {
+		results ~= PlayerTableItem(rs.getString(1));
+	}
+	return results;
 }
 
 ItemTableItem[] get_item_table_items(Connection dbconn, string table_name) {
@@ -112,4 +131,23 @@ ItemTableItem[] get_item_table_items(Connection dbconn, string table_name) {
 		results ~= ItemTableItem(rs.getString(1));
 	}
 	return results;
+}
+
+void insert_player_table_item(Connection dbconn, string uuid, string table_name) {
+	auto stmt = dbconn.createStatement();
+	scope(exit) stmt.close();
+	PlayerTableItem[] existing = dbconn.get_player_table_items(table_name);
+	foreach (e; existing) {
+		if (e.uuid == uuid) {
+			return; // Don't add duplicate entries
+		}
+	}
+	stmt.executeUpdate("INSERT INTO "~table_name~" (uuid) VALUES (\""~uuid~"\")");
+}
+
+void remove_player_table_item(Connection dbconn, string uuid, string table_name) {
+	auto stmt = dbconn.createStatement();
+	scope(exit) stmt.close();
+	assert(table_name.length > 1);
+	stmt.executeUpdate("DELETE FROM "~table_name~" WHERE uuid=\""~uuid~"\"");
 }

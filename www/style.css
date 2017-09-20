@@ -1,5 +1,7 @@
+/* Color scheme is solarized dark, cheatsheet: http://www.zovirl.com/2011/07/22/solarized_cheat_sheet/ */
+
 html, body {
-	background: #000;
+	background: #002b36;
 	font-family: sans-serif;
 	padding: 0;
 	margin: 0;
@@ -14,8 +16,8 @@ h3 {
 }
 
 #gamecanvas {
-	background: #404040;
-	color: #e0e0e0;
+	background: #002b36;
+	color: #839496;
 	padding: 0;
 	margin: 0;
 	position: absolute;
@@ -38,6 +40,7 @@ form.room, form.item_place, form.item {
 	padding: 2pt 4pt;
 	width: 250pt;
 	display: inline-block;
+	background-color: #073642;
 }
 
 form.room {
@@ -61,11 +64,11 @@ form.item_place p, form.item p {
 }
 
 p.greentext {
-	color: green;
+	color: #859900;
 }
 
 p.oncollide {
-	color: brown;
+	color: #dc322f;
 }
 
 form.new_item, form.new_place {
