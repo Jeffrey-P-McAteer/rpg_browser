@@ -183,8 +183,9 @@ void player_moved(WebSocket sock, Json data, Player p) {
 }
 
 bool has_collided(Player p, ItemPlacement place) {
-	bool x_collide = p.x+50 > place.x && p.x < place.x+50;
-	bool y_collide = p.y+50 > place.y && p.y < place.y+50;
+	Item item = dbconn.get!Item(place.item_uuid);
+	bool x_collide = p.x+item.width > place.x && p.x < place.x+item.width;
+	bool y_collide = p.y+item.height > place.y && p.y < place.y+item.height;
 	return x_collide && y_collide;
 }
 

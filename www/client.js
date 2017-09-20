@@ -90,3 +90,37 @@ function on_user_right_click(e) {
 	return false;
 }
 document.addEventListener('contextmenu', on_user_right_click, false);
+
+var last_mouse_move = new Date().getTime();
+function mouse_move(ev) {
+	var now = new Date().getTime();
+	if (now - last_mouse_move < 100) return; // Only handle events once every 100ms
+	last_mouse_move = now;
+	var x = ev.clientX;
+	var y = ev.clientY;
+	
+	x += 100;
+	y += 100;
+	
+	
+	for (var i=0; i<room.item_places.length; i++) {
+		var place = room.item_places[i];
+		var item_index = getItemIndex(place.item_uuid);
+		var item = room.items[item_index];
+		// see app.d has_collided
+		var x_collide = x+(item.width/window.devicePixelRatio) > place.x && x < place.x+(item.width/window.devicePixelRatio);
+		var y_collide = y+(item.height/window.devicePixelRatio) > place.y && y < place.y+(item.height/window.devicePixelRatio);
+		
+		if (x_collide && y_collide) {
+			// Remove any existing notifications
+			var notifications = document.getElementsByClassName('notification');
+			for (var i=0; i<notifications.length; i++) {
+				notifications[i].remove();
+			}
+			notify_specific(item.greentext, x-100, y-100);
+		}
+	}
+	
+	//console.log(ev);
+}
+document.onmousemove = mouse_move; 

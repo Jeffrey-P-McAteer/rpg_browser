@@ -43,7 +43,7 @@ function fullRender() {
 }
 window.onresize = fullRender;
 
-function notify(message) {
+function notify(message) { // Puts message in upper-right corner
 	var elm = document.getElementById("notifications");
 	var note = document.createElement("div");
 	note.className = "notification";
@@ -51,6 +51,21 @@ function notify(message) {
 	elm.appendChild(note);
 	setTimeout(function() {
 		elm.removeChild(note);
+	}, 3600);
+}
+
+function notify_specific(message, x, y) { // Puts message at specific location
+	var note = document.createElement("div");
+	note.className = "notification";
+	
+	note.style.position = "absolute";
+	note.style.left = x+"px";
+	note.style.top = y+"px";
+	
+	note.textContent = message;
+	document.body.appendChild(note);
+	setTimeout(function() {
+		document.body.removeChild(note);
 	}, 3600);
 }
 
