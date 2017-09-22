@@ -16,12 +16,13 @@ var room = {
 
 var ws; // Websocket connection
 var gamecanvas; // html5 canvas element game is painted on
-
+var coords; // <p> elm
 /// Event handlers
 
 
 window.onload = function() {
 	gamecanvas = document.getElementById('gamecanvas');
+	coords = document.getElementById('coords');
 	
 	var port_piece = location.port == '' ? '' : ':'+location.port;
 	ws = new WebSocket('ws://'+location.hostname+port_piece+'/ws');
@@ -102,6 +103,7 @@ function mouse_move(ev) {
 	x += 100;
 	y += 100;
 	
+	coords.textContent = x+"x"+y;
 	
 	for (var i=0; i<room.item_places.length; i++) {
 		var place = room.item_places[i];

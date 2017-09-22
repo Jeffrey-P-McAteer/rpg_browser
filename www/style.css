@@ -88,3 +88,12 @@ div.notification {
 	background: #586e75;
 	color: #002b36;
 }
+
+p#coords {
+	position: absolute;
+	bottom: 5pt;
+	right: 5pt;
+	padding: 0pt;
+	margin: 0pt;
+	color: #586e75;
+}

@@ -51,7 +51,7 @@ void handle_collision(Item i, ItemPlacement ip, Player p, Player old_p,
 	ctx.send_player_to_room = send_player_to_room;
 	
 	ctx.item = i.uuid;
-	ctx.player = p.uuid;
+	ctx.player = p;
 	ctx.untrusted_code = i.on_player_collide;
 	// Run python scriptlet in a restricted environment
 	string[] whitelist = [

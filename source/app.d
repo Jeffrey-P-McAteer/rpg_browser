@@ -50,6 +50,24 @@ void main(string[] args) {
 /// Performs all setup tasks before main loops spawn off
 void server_init() {
 	py_init();
+	module_init();
+	
+	// Convert unfriendly structs to nice structs
+	ex_d_to_python((Player p) => p.player_to_pythonplayer());
+	
+	// Make converters for D structs to Python objects
+	wrap_struct!(
+      PythonPlayer,
+      // Readable fields
+      Member!"uuid",
+      Member!"avatar",
+      Member!"nickname",
+      Member!"x",
+      Member!"y",
+      // Functions to call
+      Def!(PythonPlayer.notify)
+    )();
+    
 	dbconn = createConnection(db_conn_url);
 	dbconn.init_db();
 }
@@ -205,20 +223,20 @@ void get_item_data(WebSocket sock, Json data) {
 
 // Functions used as API endpoints for eval-ed python code
 
-void send_to_player(string uuid, string message) {
+void send_to_player(string uuid, string message) { // deprecated 
 	if (all_player_sockets[uuid].connected) {
 		all_player_sockets[uuid].send(construct_exec(message).toString());
 	}
 }
 
-void send_to_all(string message) {
+void send_to_all(string message) { // deprecated 
 	foreach(s; all_player_sockets) {
 		if (!s.connected) continue;
 		s.send(construct_exec(message).toString());
 	}
 }
 
-void send_player_to_room(string player_uuid, string room_uuid) {
+void send_player_to_room(string player_uuid, string room_uuid) { // deprecated, rewrite with Player struct
 	Player p = dbconn.get!Player(player_uuid);
 	Room r = dbconn.get!Room(room_uuid);
 	p.go_to_room(r);

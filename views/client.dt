@@ -9,3 +9,4 @@ html
 	body
 		canvas#gamecanvas
 		div#notifications
+		p#coords

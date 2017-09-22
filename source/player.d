@@ -34,6 +34,28 @@ struct Player {
 	string inventory_table;
 }
 
+struct PythonPlayer { // For use with python API
+	string uuid;
+	string avatar;
+	string nickname;
+	long x;
+	long y;
+	
+	void notify(string message) {
+		all_player_sockets[uuid].send(construct_exec("notify('"~message.replace("'", "\"")~"');").toString());
+	}
+}
+
+PythonPlayer player_to_pythonplayer(Player p) {
+	PythonPlayer pp;
+	pp.uuid = p.uuid;
+	pp.avatar = p.avatar;
+	pp.nickname = p.nickname;
+	pp.x = p.x;
+	pp.y = p.y;
+	return pp;
+}
+
 Player create_player() {
 	Player p;
 	p.uuid = randomUUID().toString();
